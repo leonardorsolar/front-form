@@ -16,6 +16,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     };
 
     console.log(userData)
+    console.log(userData)
 
     // Envia os dados para a API
     fetch('http://localhost:3000/criarUsuario', {
