@@ -231,10 +231,10 @@ app.post("/usuario", (req, res) => {
         function (err) {
             if (err) {
                 console.error(err.message) // Exibe uma mensagem de erro se a inserção falhar
-                res.status(500).send("Error creating user") // Retorna um status de erro 500 ao cliente
+                res.status(500).json({ error: "Error creating user - back" }) // Retorna um status de erro 500 ao cliente
             } else {
-                console.log("User created successfully!") // Exibe uma mensagem de sucesso no console
-                res.status(201).send("User created successfully!") // Retorna uma resposta de sucesso com status 201
+                console.log("Usuário criado com sucesso!") // Exibe uma mensagem de sucesso no console
+                rres.status(201).json({ name: data.name }) // Retorna sucesso ao cliente // Retorna uma resposta de sucesso com status 201
             }
         }
     )

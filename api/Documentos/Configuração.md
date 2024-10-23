@@ -57,35 +57,33 @@ app.use(cors()) // Aplica o CORS para permitir requisições de outros domínios
 const db = new sqlite3.Database("./database.db")
 
 // Cria a tabela 'usuarios' se ela ainda não existir
+// email TEXT UNIQUE NOT NULL,
 db.run(
     `CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
+    email TEXT NOT NULL,
     password TEXT NOT NULL
   )`,
     (err) => {
         if (err) {
             console.error(err.message) // Exibe uma mensagem de erro se ocorrer ao criar a tabela
         } else {
-            console.log("Tabela 'usuarios' criada com sucesso!") // Exibe mensagem se a tabela for criada com sucesso
+            console.log("Table usuarios created successfully!") // Exibe mensagem se a tabela for criada com sucesso
         }
     }
 )
 
-// Rota GET para verificar se a API está funcionando
+// Rota GET para visualização
 app.get("/", (req, res) => {
-    res.send("API de Usuários está funcionando corretamente!")
+    // Define uma rota GET no caminho raiz ('/')
+    res.send("Olá, Mundo! Bem-vindo ao Express com JavaScript.") // Responde com uma mensagem de boas-vindas
 })
 
-// Rota POST para receber os dados e inserir um usuário no banco de dados
-app.post("/usuario", (req, res) => {
+// Rota POST para adicionar um usuário ao banco de dados
+app.post("/criar-usuario", (req, res) => {
     const data = req.body // Captura os dados do corpo da requisição
-
-    // Verifica se todos os campos necessários estão presentes
-    if (!data.name || !data.email || !data.password) {
-        return res.status(400).send("Faltam dados obrigatórios")
-    }
+    console.log(data) // Exibe os dados no console para depuração
 
     // Insere um novo usuário na tabela 'usuarios'
     db.run(
@@ -93,12 +91,17 @@ app.post("/usuario", (req, res) => {
         [data.name, data.email, data.password], // Substitui os "?" pelos valores de 'name', 'email' e 'password'
         function (err) {
             if (err) {
-                console.error(err.message) // Exibe uma mensagem de erro se a inserção falhar
-                res.status(500).send("Erro ao criar usuário") // Retorna um status de erro 500 ao cliente
-            } else {
-                console.log("Usuário criado com sucesso!")
-                res.status(201).send("Usuário criado com sucesso!") // Retorna uma resposta de sucesso com status 201
+                console.error("Erro ao inserir usuário:", err.message)
+                // Verifica se o erro é uma violação de unicidade
+                //if (err.code === 'SQLITE_CONSTRAINT') {
+                //    return res.status(409).json({ error: "E-mail já cadastrado" }); // 409 Conflict
+                //}
+                return res
+                    .status(500)
+                    .json({ error: "Error creating user - back" }) // Retorna erro ao cliente
             }
+            console.log("Usuário criado com sucesso!") // Exibe mensagem de sucesso
+            res.status(201).json({ name: data.name }) // Retorna sucesso ao cliente
         }
     )
 })
@@ -160,7 +163,7 @@ app.listen(PORT, () => {
 7. **Rota POST**: Recebe os dados do usuário e os insere na tabela `usuarios`.
 
     ```js
-    app.post("/usuario", (req, res) => {
+    app.post("/criar-usuario", (req, res) => {
         const data = req.body
         db.run(
             `INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)`,
@@ -197,7 +200,7 @@ O servidor estará disponível em `http://localhost:3000`.
 
 ### 6. Testar a API
 
-Você pode testar a API usando o Postman ou qualquer cliente HTTP. Faça uma requisição **POST** para `http://localhost:3000/usuario` com os seguintes dados no corpo (em formato JSON):
+Você pode testar a API usando o Postman ou qualquer cliente HTTP. Faça uma requisição **POST** para `http://localhost:3000/criar-usuario` com os seguintes dados no corpo (em formato JSON):
 
 ```json
 {
