@@ -20,23 +20,35 @@ document
         console.log(userData)
 
         // Envia os dados para a API
-        fetch("http://localhost:3000/api/criarUsuario", {
+        fetch("http://localhost:3000/criar-usuario", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(userData),
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    console.log(response)
+                    return response.json().then((errorData) => {
+                        throw new Error(
+                            errorData.error || "Erro ao registrar usuário"
+                        )
+                    })
+                }
+                return response.json()
+            })
             .then((data) => {
-                const userName = data.nome || data.name // Tenta pegar "nome" primeiro, se não existir, pega "name"
+                console.log("sucesso")
+                console.log(data)
+                const userName = data.name
                 document.getElementById(
                     "responseMessage"
                 ).innerText = `Usuário registrado com sucesso! Bem-vindo, ${userName}.`
             })
             .catch((error) => {
+                console.log("Erro:", error)
                 document.getElementById("responseMessage").innerText =
-                    "Erro ao registrar usuário."
-                console.error("Erro:", error)
+                    "Erro ao registrar usuário - front."
             })
     })
