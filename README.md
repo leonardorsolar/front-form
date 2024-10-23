@@ -74,17 +74,25 @@ Este código cria um servidor web básico usando o framework Express em Node.js:
 
 Importa o Express: Utiliza o Express, uma biblioteca que facilita a criação de servidores HTTP.
 Cria o servidor: Inicializa o servidor com express().
+
+### Adicionando formato JSON
+
+express.json(): Processa o corpo de requisições JSON, permitindo que a aplicação acesse os dados enviados pelo cliente.
 Middleware JSON: Permite que o servidor entenda e processe requisições enviadas em formato JSON.
+
+Middleware: app.use(express.json()):
+Propósito: Este middleware permite que o servidor interprete o corpo das requisições HTTP enviadas em formato JSON.
+Como funciona: Quando o cliente envia dados em JSON (por exemplo, ao enviar um POST), esse middleware converte esses dados em um objeto JavaScript para que as rotas possam acessar e manipular esses dados de forma fácil.
+Por que é útil: Sem esse middleware, o servidor não entenderia o corpo das requisições JSON, e você teria que fazer o parsing manualmente.
+
+### Adicionando o método get
+
 Define uma rota GET: Cria uma rota no caminho '/' (raiz), que responde com a mensagem "Olá, Mundo! Bem-vindo ao Express com JavaScript." quando acessada.
 Escuta na porta 3000: O servidor fica "ouvindo" na porta 3000 e, quando iniciado, exibe uma mensagem no console indicando que está funcionando.
 
 # Parte 3: BackEnd - Projeto de uma API
 
 Conectando o front com o back em Javascript
-
-## Adicionando formato JSON
-
-express.json(): Processa o corpo de requisições JSON, permitindo que a aplicação acesse os dados enviados pelo cliente.
 
 ## Adicionando a politica do cors
 
@@ -112,11 +120,6 @@ app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`) // Exibe uma mensagem no console quando o servidor está ativo
 })
 ```
-
-Middleware: app.use(express.json()):
-Propósito: Este middleware permite que o servidor interprete o corpo das requisições HTTP enviadas em formato JSON.
-Como funciona: Quando o cliente envia dados em JSON (por exemplo, ao enviar um POST), esse middleware converte esses dados em um objeto JavaScript para que as rotas possam acessar e manipular esses dados de forma fácil.
-Por que é útil: Sem esse middleware, o servidor não entenderia o corpo das requisições JSON, e você teria que fazer o parsing manualmente.
 
 Middleware: app.use(cors())
 Propósito: Este middleware habilita o CORS (Cross-Origin Resource Sharing), que permite que o servidor aceite requisições de outros domínios.
