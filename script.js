@@ -30,6 +30,9 @@ document
             .then((response) => {
                 if (!response.ok) {
                     console.log(response)
+                    const result = response.text()
+                    console.log(result)
+                    console.log(result) // Exibir o retorno do servidor
                     return response.json().then((errorData) => {
                         throw new Error(
                             errorData.error || "Erro ao registrar usuário"
