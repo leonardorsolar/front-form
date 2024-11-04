@@ -1,0 +1,63 @@
+# Visual Studio
+.vs/
+*.sln
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Aa][Rr][Mm]32/
+out/
+bin/
+obj/
+publish/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.props
+*.targets
+**/packages/*
+
+# User-specific files
+*.db
+*.sublime-workspace
+*.sublime-project
+
+# Other files
+*.log
+*.tlog
+*.pdb
+*.mdb
+*.cache
+*.zip
+*.tar.gz
+*.tgz
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose*.yml
+
+# JetBrains Rider
+.idea/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET specific
+appsettings.Development.json
+appsettings.json
