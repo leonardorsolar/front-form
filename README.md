@@ -1,5 +1,7 @@
 # Aula Geral
 
+![Diagrama](diagrama.png)
+
 # Projeto 1: FrontEnd - Projeto HTML, CSS e Javascript
 
 ## Objeto de dados:
