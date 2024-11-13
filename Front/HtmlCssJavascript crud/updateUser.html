@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Usuário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Atualizar Usuário</h1>
+        <form id="updateUserForm">
+            <label for="userId">ID do Usuário:</label>
+            <input type="text" id="userId" name="userId" required>
+
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Atualizar</button>
+        </form>
+        <div id="updateMessage"></div>
+        <!-- Botão para voltar para a página inicial -->
+        <div class="mt-1">
+    <button onclick="window.location.href='index.html'">Voltar para Página Inicial</button>
+</div>
+        
+    </div>
+    <script src="updateUser.js"></script>
+</body>
+</html>

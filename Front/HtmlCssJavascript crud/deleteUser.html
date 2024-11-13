@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover Usuário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Remover Usuário</h1>
+        <form id="deleteUserForm">
+            <label for="userId">ID do Usuário:</label>
+            <input type="text" id="userId" name="userId" required>
+            <button type="submit">Remover</button>
+        </form>
+        <div id="deleteMessage"></div>
+          <div class="mt-1">
+    <button onclick="window.location.href='index.html'">Voltar para Página Inicial</button>
+</div>
+        
+    </div>
+    <script src="deleteUser.js"></script>
+</body>
+</html>
