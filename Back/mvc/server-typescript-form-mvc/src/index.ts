@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import usuarioRotas from './rotas/UsuarioRotas';
+//import loginRotas from './rotas/LoginRoutes';
 import cors from 'cors'; // Importa o CORS
 
 const app = express();
@@ -13,7 +14,8 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Olá, Mundo! Bem-vindo ao Express com TypeScript.');
 });
 
-app.use('/api', usuarioRotas);
+app.use('/api/usuarios', usuarioRotas);
+//app.use('/api/login', loginRotas);
 
 const PORT = 3000;
 app.listen(PORT, () => {

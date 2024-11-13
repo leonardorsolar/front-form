@@ -187,3 +187,75 @@ const PORT = 3000; app.listen(PORT, () => { console.log(`Servidor rodando na por
 3. Pronto!
 
 Agora o cors está configurado no seu projeto TypeScript e pronto para uso.
+
+# chatGpt: Crie somente a estrutura de pasta de um padrão MVC em javascript onde teríamos os módulos: usuários , login, produto, estoque, permissões e relatório.
+
+```lua
+project-root/
+├── config/             	# Configurações e variáveis de ambiente
+│   └── database.js     	# Configuração de banco de dados
+│   └── auth.js         	# Configuração de autenticação
+│
+├── controllers/        	# Controladores (lógica de negócios e manipulação de dados)
+│   ├── usuarioController.js
+│   ├── loginController.js
+│   ├── produtoController.js
+│   ├── estoqueController.js
+│   ├── permissaoController.js
+│   └── relatorioController.js
+│
+├── models/             	# Modelos (definição de dados e interação com o banco de dados)
+│   ├── usuarioModel.js
+│   ├── loginModel.js
+│   ├── produtoModel.js
+│   ├── estoqueModel.js
+│   ├── permissaoModel.js
+│   └── relatorioModel.js
+│
+├── routes/             	# Rotas (define os endpoints da API)
+│   ├── usuarioRoutes.js
+│   ├── loginRoutes.js
+│   ├── produtoRoutes.js
+│   ├── estoqueRoutes.js
+│   ├── permissaoRoutes.js
+│   └── relatorioRoutes.js
+│
+├── services/           	# Serviços (lógica de negócios específica e reutilizável)
+│   ├── usuarioService.js
+│   ├── loginService.js
+│   ├── produtoService.js
+│   ├── estoqueService.js
+│   ├── permissaoService.js
+│   └── relatorioService.js
+│
+├── views/              	# Visualizações (arquivos de front-end ou templates)
+│   ├── usuario/        	# Pastas de views por módulo
+│   ├── login/
+│   ├── produto/
+│   ├── estoque/
+│   ├── permissao/
+│   └── relatorio/
+│
+├── middleware/         	# Middleware (funções intermediárias, autenticação, etc.)
+│   └── authMiddleware.js
+│
+├── utils/              	# Utilitários (funções auxiliares, validações, etc.)
+│   └── validation.js
+│
+├── .env                	# Variáveis de ambiente
+├── app.js              	# Arquivo principal de inicialização do app
+└── package.json        	# Dependências e scripts
+```
+
+### Descrição dos Diretórios
+
+- **config/**: Configurações do projeto, como conexão com o banco de dados e configurações de autenticação.
+- **controllers/**: Controladores que gerenciam a lógica de cada módulo.
+- **models/**: Modelos que representam as tabelas ou coleções no banco de dados.
+- **routes/**: Define as rotas/endpoints de cada módulo.
+- **services/**: Lógica de negócios específica que pode ser reutilizada e isolada.
+- **views/**: Arquivos front-end ou templates para renderizar páginas (caso o projeto tenha interface).
+- **middleware/**: Funções intermediárias para tratamento de autorização, autenticação e outras verificações.
+- **utils/**: Funções auxiliares, como validações e outros utilitários.
+
+Essa estrutura é flexível e permite um crescimento organizado do projeto, com os módulos organizados por responsabilidades.
