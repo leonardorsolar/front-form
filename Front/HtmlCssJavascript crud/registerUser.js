@@ -20,7 +20,7 @@ document
         console.log(userData)
 
         // Envia os dados para a API
-        fetch("http://localhost:3000/criar-usuario", {
+        fetch("http://localhost:3000/api/usuarios/criarUsuario", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

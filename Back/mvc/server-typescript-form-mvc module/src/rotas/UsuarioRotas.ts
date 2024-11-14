@@ -1,7 +1,7 @@
 // Importa o roteador do Express e as classes necessárias para o serviço e o controlador do usuário
 import { Router } from 'express';
-import { ServicoUsuario } from '../servicos/ServicoUsuario';
-import { ControladorUsuario } from '../controladora/ControladorUsuario';
+import { ServicoUsuario } from '../modulos/usuario/servicos/ServicoUsuario';
+import { ControladorUsuario } from '../modulos/usuario/controladora/ControladorUsuario';
 
 // Cria uma instância do roteador para definir as rotas
 const usuarioRotas = Router();
@@ -13,7 +13,6 @@ const controladorUsuario = new ControladorUsuario(servicoUsuario);
 // Rota POST para criar um novo usuário
 // Chama o método 'criarUsuario' do controlador, que cria um novo usuário com base nos dados da requisição
 usuarioRotas.post('/criarUsuario', (req, res) => {
-  console.log('endpoint - criarUsuario');
   controladorUsuario.criarUsuario(req, res);
 });
 
