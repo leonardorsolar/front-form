@@ -21,4 +21,8 @@ Essa disposição segue o padrão **Transaction Script** porque as operações d
    - Este padrão agrupa a lógica de negócios em torno de uma tabela de banco de dados, com métodos que manipulam diretamente os dados de uma tabela específica.
    - Isso seria como criar um módulo `UsuarioTable` que encapsula todas as operações relacionadas a usuários, e um `LoginTable` para logins, isolando operações específicas por tabela e mantendo o código modular.
 
+3. **Service Layer (Camada de Serviço)**:
+   - Coloca a lógica de negócios em serviços de nível mais alto, que coordenam várias operações e chamam repositórios para acessar dados.
+   - Exemplo: Um `LoginService` chamaria um `UsuarioRepository` e `LoginRepository` para recuperar dados e aplicar regras de negócio, mas os serviços não manipulariam o banco diretamente.
+
 Cada padrão oferece vantagens dependendo da complexidade da aplicação e dos requisitos de manutenibilidade e escalabilidade.
