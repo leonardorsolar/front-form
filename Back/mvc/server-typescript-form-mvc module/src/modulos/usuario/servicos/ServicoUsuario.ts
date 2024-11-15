@@ -2,7 +2,7 @@ import { saveUserToDatabase, findUserById, updateUserInDatabase, deleteUserFromD
 import { Usuario } from '../modelos/Usuario';
 
 export class ServicoUsuario {
-  private usuarios: Usuario[] = [];
+  //private usuarios: Usuario[] = [];
 
   constructor() {}
 

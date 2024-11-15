@@ -44,7 +44,7 @@ document
             .then((data) => {
                 console.log("sucesso")
                 console.log(data)
-                const userName = data.name
+                const userName = data.nome || data?.name
                 document.getElementById(
                     "responseMessage"
                 ).innerText = `Usuário registrado com sucesso! Bem-vindo, ${userName}.`

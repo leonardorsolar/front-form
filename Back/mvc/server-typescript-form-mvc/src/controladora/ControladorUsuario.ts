@@ -14,6 +14,7 @@ export class ControladorUsuario {
     console.log(req.body);
     try {
       const usuario = await this.servicoUsuario.criarUsuario(req.body);
+      console.log(usuario);
       res.status(201).json(usuario);
     } catch (error: any) {
       res.status(500).json({ error: error.message });

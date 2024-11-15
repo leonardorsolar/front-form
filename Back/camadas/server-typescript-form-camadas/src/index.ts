@@ -14,7 +14,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Olá, Mundo! Bem-vindo ao Express com TypeScript.');
 });
 
-app.use('/api', usuarioRotas);
+app.use('/api/usuarios/', usuarioRotas);
 
 const PORT = 3000;
 app.listen(PORT, () => {

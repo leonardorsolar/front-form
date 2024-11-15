@@ -2,11 +2,13 @@ export class Usuario {
   private nome: string;
   private email: string;
   private senha: string;
+  private id?: number;
 
-  constructor(nome: string, email: string, senha: string) {
+  constructor(nome: string, email: string, senha: string, id?: number) {
     this.nome = nome;
     this.email = email;
     this.senha = senha;
+    this.id = id;
   }
 
   getNome(): string {

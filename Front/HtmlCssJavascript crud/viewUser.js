@@ -13,9 +13,10 @@ document
                 return response.json()
             })
             .then((data) => {
-                document.getElementById(
-                    "userInfo"
-                ).innerText = `Usuário: ${data.name}, Email: ${data.email}`
+                console.log(data)
+                document.getElementById("userInfo").innerText = `Usuário: ${
+                    data.nome || data?.name
+                }, Email: ${data.email}`
             })
             .catch((error) => {
                 document.getElementById("userInfo").innerText = error.message

@@ -8,20 +8,27 @@ export class ServicoUsuario {
     this.repositorioUsuario = repositorioUsuario;
   }
 
-  public criarUsuario(dado: any): Usuario {
-    //console.log(dado);
+  // Método para criar um usuário
+  public async criarUsuario(dado: any): Promise<any> {
+    console.log('ServicoUsuario');
+    console.log(dado);
     const usuario = new Usuario(dado.name, dado.email, dado.password);
-    //console.log(usuario);
-    const dadosUsuario = this.repositorioUsuario.salvar(usuario); // Delegando persistência ao repositório
-    //console.log(dadosUsuario);
-    return dadosUsuario;
+    try {
+      const userId = await this.repositorioUsuario.salvar(usuario);
+      return { ...usuario, id: userId };
+    } catch (error) {
+      console.error('Erro ao salvar usuário no banco de dados', error);
+      throw new Error('Erro ao criar usuário');
+    }
   }
 
-  public listarUsuarios(): Usuario[] {
-    return this.repositorioUsuario.listarTodos();
-  }
-
-  public buscarUsuarioPorEmail(email: string): Usuario | undefined {
-    return this.repositorioUsuario.buscarPorEmail(email);
+  // Método para buscar um usuário pelo ID
+  public async obterUsuario(id: number): Promise<Usuario | null> {
+    try {
+      return await this.repositorioUsuario.buscarPorId(id);
+    } catch (error) {
+      console.error('Erro ao buscar usuário no banco de dados', error);
+      throw new Error('Erro ao obter usuário');
+    }
   }
 }
