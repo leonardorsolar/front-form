@@ -33,19 +33,20 @@ app.get("/", (req, res) => {
 app.post("/api/usuarios/criarUsuario", async (req, res) => {
     const data = req.body // Captura os dados do corpo da requisição
     console.log(data) // Exibe os dados no console para depuração
-    //maneira 1: direta
+    //estrutura 1: básica (função de chamada e retorno)
     const output = await saveUserToDatabase(data.name) // função que  salvará os dados no banco
     res.status(201).json({ name: output })
-    // maneira 2: com validações e tratamento de erros
+    // estrutura 2: função de chamada, retorno estuturadio, validações e tratamento de erros.
     // if (!data.name) {
     //     return res.status(400).json({ error: "O campo 'name' é obrigatório." })
     // }
-
     // try {
     //     const output = await saveUserToDatabase(data.name) // Salva o usuário no banco de dados
     //     res.status(201).json({
     //         name: output,
-    //         message: "Usuário criado com sucesso.",
+    //         error: null,
+    //         isSuccess: true,
+    //         isFailure: false
     //     })
     // } catch (error) {
     //     res.status(500).json({
